@@ -5,6 +5,21 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import * as compression from 'compression';
+import { ServerOptions } from 'socket.io';
+
+class CorsIoAdapter extends IoAdapter {
+  createIOServer(port: number, options?: ServerOptions) {
+    const server = super.createIOServer(port, {
+      ...options,
+      cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+        credentials: true,
+      },
+    });
+    return server;
+  }
+}
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -36,8 +51,8 @@ async function bootstrap() {
     }),
   );
 
-  // WebSocket adapter
-  app.useWebSocketAdapter(new IoAdapter(app));
+  // WebSocket adapter with open CORS
+  app.useWebSocketAdapter(new CorsIoAdapter(app));
 
   // Swagger
   const config = new DocumentBuilder()
