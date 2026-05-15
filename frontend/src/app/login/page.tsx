@@ -29,57 +29,52 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/20 blur-[120px] pointer-events-none"></div>
-
-      <div className="w-full max-w-md p-8 relative z-10">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight mb-2">
-            <span className="text-primary">Mieux</span>Flow
+    <div className="min-h-screen bg-[#f9f9fa] flex items-center justify-center font-sans">
+      <div className="w-full max-w-md p-8">
+        <div className="text-center mb-10 flex flex-col items-center">
+          <div className="w-12 h-12 rounded-lg bg-[#8780f2] flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-sm">
+            M
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-[#1e1e20] mb-1">
+            Welcome to MieuxFlow
           </h1>
-          <p className="text-muted-foreground">Enterprise Operations Command Center</p>
+          <p className="text-sm text-[#5b5b66]">Sign in to your workspace</p>
         </div>
 
-        <div className="bg-card border shadow-xl rounded-2xl p-8 backdrop-blur-sm">
-          <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
-          
+        <div className="bg-white border border-[#e8ecee] shadow-sm rounded-xl p-8">
           {error && (
-            <div className="bg-destructive/10 border border-destructive/20 text-destructive text-sm p-3 rounded-lg mb-6 text-center">
+            <div className="bg-red-50 border border-red-100 text-red-600 text-sm p-3 rounded-md mb-6 text-center">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Email Address</label>
+              <label className="text-sm font-medium text-[#1e1e20]">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-11 bg-background border rounded-lg pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder="name@mieuxtech.com"
+                  className="w-full h-10 bg-white border border-[#e8ecee] rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#8780f2]/50 focus:border-[#8780f2] transition-all text-[#1e1e20]"
+                  placeholder="name@company.com"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">Password</label>
-                <a href="#" className="text-xs text-primary hover:underline">Forgot password?</a>
+                <label className="text-sm font-medium text-[#1e1e20]">Password</label>
+                <a href="#" className="text-xs text-[#8780f2] hover:underline font-medium">Forgot password?</a>
               </div>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
                 <input
                   type="password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full h-11 bg-background border rounded-lg pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full h-10 bg-white border border-[#e8ecee] rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#8780f2]/50 focus:border-[#8780f2] transition-all text-[#1e1e20]"
                   placeholder="••••••••"
                 />
               </div>
@@ -88,15 +83,15 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full h-11 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center mt-2"
+              className="w-full h-10 bg-[#8780f2] text-white font-medium rounded-md hover:bg-[#726ce0] focus:outline-none focus:ring-2 focus:ring-[#8780f2] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center mt-4"
             >
-              {isLoading ? <Loader2 className="animate-spin" size={20} /> : "Access Command Center"}
+              {isLoading ? <Loader2 className="animate-spin" size={18} /> : "Log in"}
             </button>
           </form>
         </div>
         
-        <p className="text-center text-xs text-muted-foreground mt-8">
-          &copy; 2026 Mieux Technologies Pvt Ltd. All rights reserved.
+        <p className="text-center text-xs text-[#5b5b66] mt-8">
+          &copy; 2026 Mieux Technologies Pvt Ltd.
         </p>
       </div>
     </div>
