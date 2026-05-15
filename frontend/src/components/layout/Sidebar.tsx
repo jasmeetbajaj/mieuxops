@@ -36,14 +36,13 @@ export const Sidebar = () => {
   }
 
   return (
-    <div className="w-64 bg-sidebar/80 backdrop-blur-xl text-sidebar-foreground h-screen flex flex-col fixed left-0 top-0 border-r border-border shadow-[4px_0_24px_rgba(0,0,0,0.5)] z-40">
-      <div className="h-16 flex items-center px-6 font-bold text-xl tracking-tight border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent"></div>
-        <span className="text-primary mr-1 relative z-10 shadow-glow-primary">Mieux</span><span className="relative z-10">Flow</span>
+    <div className="w-64 bg-sidebar text-sidebar-foreground h-screen flex flex-col fixed left-0 top-0 z-40">
+      <div className="h-16 flex items-center px-6 font-bold text-xl tracking-tight border-b border-white/5">
+        <span className="text-white mr-1">Mieux</span><span className="text-white/70">Flow</span>
       </div>
 
       <div className="flex-1 overflow-y-auto py-6 px-3">
-        <div className="space-y-2">
+        <div className="space-y-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
@@ -51,40 +50,37 @@ export const Sidebar = () => {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center space-x-3 px-3 py-3 rounded-lg text-sm font-medium transition-all duration-300 group relative overflow-hidden",
+                  "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   isActive 
-                    ? "text-white shadow-glow" 
-                    : "text-sidebar-foreground/70 hover:text-white hover:bg-sidebar-hover/50"
+                    ? "bg-white/10 text-white" 
+                    : "text-sidebar-foreground/70 hover:text-white hover:bg-white/5"
                 )}
               >
-                {isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent border-l-2 border-primary"></div>
-                )}
-                <div className={cn("relative z-10 transition-transform duration-300", isActive ? "text-primary scale-110" : "group-hover:text-primary group-hover:scale-110")}>
+                <div className={cn(isActive ? "text-white" : "text-sidebar-foreground/70")}>
                   {item.icon}
                 </div>
-                <span className="relative z-10">{item.label}</span>
+                <span>{item.label}</span>
               </Link>
             );
           })}
         </div>
       </div>
 
-      <div className="p-4 border-t border-border">
-        <div className="flex items-center space-x-3 mb-4 px-2 hover:bg-white/5 p-2 rounded-lg transition-colors cursor-pointer group">
-          <div className="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold shadow-glow-primary group-hover:scale-110 transition-transform">
+      <div className="p-4 border-t border-white/5">
+        <div className="flex items-center space-x-3 mb-4 px-2 hover:bg-white/5 p-2 rounded-md transition-colors cursor-pointer">
+          <div className="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
             {user?.firstName?.[0]}{user?.lastName?.[0]}
           </div>
           <div className="overflow-hidden">
-            <p className="text-sm font-medium truncate group-hover:text-primary transition-colors">{user?.firstName} {user?.lastName}</p>
-            <p className="text-xs text-sidebar-foreground/50 truncate capitalize">{user?.role?.replace('_', ' ')}</p>
+            <p className="text-sm font-medium truncate text-white">{user?.firstName} {user?.lastName}</p>
+            <p className="text-xs text-white/50 truncate capitalize">{user?.role?.replace('_', ' ')}</p>
           </div>
         </div>
         <button 
           onClick={logout}
-          className="w-full flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-destructive hover:bg-destructive hover:text-destructive-foreground hover:shadow-glow-destructive transition-all duration-300 group"
+          className="w-full flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/5 hover:text-white transition-colors"
         >
-          <LogOut size={18} className="group-hover:-translate-x-1 transition-transform" />
+          <LogOut size={18} />
           <span>Logout</span>
         </button>
       </div>
