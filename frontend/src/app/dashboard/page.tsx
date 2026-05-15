@@ -33,49 +33,49 @@ export default function DashboardPage() {
       {/* SLA Engine & Global Stats Panel */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm relative overflow-hidden group">
-          <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform"><Briefcase size={100} /></div>
+        <div className="p-6 rounded-xl border border-border bg-card/60 backdrop-blur-md shadow-lg relative overflow-hidden group hover:border-primary/50 transition-all duration-300 hover:shadow-glow-primary animate-fade-in-up" style={{ animationDelay: "0ms" }}>
+          <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 group-hover:opacity-10 group-hover:rotate-12 transition-all duration-500"><Briefcase size={120} /></div>
           <h3 className="text-sm font-semibold uppercase text-muted-foreground mb-2 flex items-center">
             Active Projects
           </h3>
           <div className="flex items-baseline space-x-3">
-            <span className="text-4xl font-extrabold">{summary?.activeProjects || 0}</span>
-            <span className="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center">
+            <span className="text-5xl font-extrabold text-foreground">{summary?.activeProjects || 0}</span>
+            <span className="text-xs font-medium text-primary bg-primary/10 border border-primary/20 px-2.5 py-0.5 rounded-full flex items-center shadow-[0_0_10px_rgba(0,240,255,0.2)]">
               Target hit
             </span>
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm relative overflow-hidden group">
-          <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform"><Clock size={100} /></div>
+        <div className="p-6 rounded-xl border border-border bg-card/60 backdrop-blur-md shadow-lg relative overflow-hidden group hover:border-primary/50 transition-all duration-300 hover:shadow-glow-primary animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+          <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 group-hover:opacity-10 group-hover:-rotate-12 transition-all duration-500"><Clock size={120} /></div>
           <h3 className="text-sm font-semibold uppercase text-muted-foreground mb-2 flex items-center">
             Pending Tasks
           </h3>
           <div className="flex items-baseline space-x-3">
-            <span className="text-4xl font-extrabold">{summary?.pendingTasks || 0}</span>
+            <span className="text-5xl font-extrabold text-foreground">{summary?.pendingTasks || 0}</span>
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm relative overflow-hidden group border-destructive/20 bg-destructive/5">
-          <div className="absolute -right-4 -bottom-4 opacity-5 text-destructive group-hover:scale-110 transition-transform"><AlertTriangle size={100} /></div>
+        <div className="p-6 rounded-xl border border-destructive/30 bg-destructive/5 backdrop-blur-md shadow-lg relative overflow-hidden group hover:border-destructive transition-all duration-300 hover:shadow-glow-destructive animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <div className="absolute -right-4 -bottom-4 opacity-5 text-destructive group-hover:scale-110 group-hover:opacity-20 transition-all duration-500"><AlertTriangle size={120} /></div>
           <h3 className="text-sm font-semibold uppercase text-destructive mb-2 flex items-center">
             SLA Breaches
           </h3>
           <div className="flex items-baseline space-x-3">
-            <span className="text-4xl font-extrabold text-destructive">{summary?.slaBreached || 0}</span>
-            <span className="text-xs font-medium text-destructive bg-destructive/10 px-2 py-0.5 rounded-full flex items-center">
+            <span className="text-5xl font-extrabold text-destructive drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">{summary?.slaBreached || 0}</span>
+            <span className="text-xs font-medium text-destructive bg-destructive/10 border border-destructive/20 px-2.5 py-0.5 rounded-full flex items-center animate-pulse">
               Requires attention
             </span>
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm relative overflow-hidden group border-emerald-500/20 bg-emerald-500/5">
-          <div className="absolute -right-4 -bottom-4 opacity-5 text-emerald-500 group-hover:scale-110 transition-transform"><CheckCircle2 size={100} /></div>
-          <h3 className="text-sm font-semibold uppercase text-emerald-600 dark:text-emerald-500 mb-2 flex items-center">
+        <div className="p-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5 backdrop-blur-md shadow-lg relative overflow-hidden group hover:border-emerald-500 transition-all duration-300 hover:shadow-glow-emerald animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+          <div className="absolute -right-4 -bottom-4 opacity-5 text-emerald-500 group-hover:scale-110 group-hover:opacity-20 transition-all duration-500"><CheckCircle2 size={120} /></div>
+          <h3 className="text-sm font-semibold uppercase text-emerald-500 mb-2 flex items-center">
             Delivered YTD
           </h3>
           <div className="flex items-baseline space-x-3">
-            <span className="text-4xl font-extrabold text-emerald-600 dark:text-emerald-500">{summary?.completedProjects || 0}</span>
+            <span className="text-5xl font-extrabold text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">{summary?.completedProjects || 0}</span>
           </div>
         </div>
 

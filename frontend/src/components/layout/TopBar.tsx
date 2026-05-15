@@ -39,14 +39,14 @@ export const TopBar = () => {
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <header className="h-16 border-b bg-card/50 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-30">
+    <header className="h-16 border-b border-border bg-card/60 backdrop-blur-xl flex items-center justify-between px-6 sticky top-0 z-30 shadow-sm transition-all duration-300">
       <div className="flex-1 max-w-xl">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
+        <div className="relative group">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors" size={18} />
           <input 
             type="text" 
             placeholder="Search projects, tasks, orders..." 
-            className="w-full h-10 bg-background border rounded-full pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+            className="w-full h-10 bg-background/50 border border-border rounded-full pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:bg-background transition-all"
           />
         </div>
       </div>
@@ -55,11 +55,11 @@ export const TopBar = () => {
         <div className="relative">
           <button 
             onClick={() => setShowDropdown(!showDropdown)}
-            className="relative p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary focus:outline-none"
+            className="relative p-2 text-muted-foreground hover:text-primary transition-all duration-300 rounded-full hover:bg-primary/10 focus:outline-none shadow-sm hover:shadow-glow-primary group"
           >
-            <Bell size={20} />
+            <Bell size={20} className="group-hover:animate-[pulse-glow_2s_ease-in-out_infinite]" />
             {unreadCount > 0 && (
-              <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-destructive rounded-full border-2 border-background"></span>
+              <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-destructive rounded-full border-2 border-card shadow-glow-destructive animate-pulse"></span>
             )}
           </button>
           

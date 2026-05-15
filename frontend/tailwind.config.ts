@@ -63,6 +63,32 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        'glow': '0 0 20px rgba(0, 240, 255, 0.5)',
+        'glow-primary': '0 0 20px hsl(var(--primary) / 0.5)',
+        'glow-destructive': '0 0 20px hsl(var(--destructive) / 0.5)',
+        'glow-emerald': '0 0 20px rgba(16, 185, 129, 0.5)',
+        'glow-amber': '0 0 20px rgba(245, 158, 11, 0.5)',
+      },
+      keyframes: {
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        }
+      },
+      animation: {
+        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
+        "pulse-glow": "pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "float": "float 3s ease-in-out infinite",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
