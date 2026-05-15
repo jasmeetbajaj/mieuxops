@@ -42,6 +42,7 @@ services:
       - UPLOAD_DIR=./uploads/documents
       - ENABLE_EMAIL_NOTIFICATIONS=false
       - ENABLE_WHATSAPP_NOTIFICATIONS=false
+      - FRONTEND_URL=http://103.89.45.174:3000
     ports:
       - "4000:4000"
     depends_on:
