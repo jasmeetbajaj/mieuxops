@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: mieuxflow_postgres
+    environment:
+      POSTGRES_USER: mieux
+      POSTGRES_PASSWORD: mieuxpass
+      POSTGRES_DB: mieuxflow_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - mieux_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: mieuxflow_redis
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - mieux_network
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mieuxflow_backend
+    environment:
+      - PORT=4000
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=mieux
+      - DB_PASS=mieuxpass
+      - DB_NAME=mieuxflow_db
+      - JWT_SECRET=mieuxflow_super_secret_key_2026
+      - JWT_EXPIRATION=24h
+      - UPLOAD_DIR=./uploads/documents
+      - ENABLE_EMAIL_NOTIFICATIONS=false
+      - ENABLE_WHATSAPP_NOTIFICATIONS=false
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - redis
+    restart: always
+    networks:
+      - mieux_network
+    volumes:
+      - backend_uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mieuxflow_frontend
+    ports:
+      - "80:3000"
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - mieux_network
+
+volumes:
+  postgres_data:
+  backend_uploads:
+
+networks:
+  mieux_network:
+    driver: bridge
