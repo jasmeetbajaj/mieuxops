@@ -35,7 +35,7 @@ services:
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=mieux
-      - DB_PASS=mieuxpass
+      - DB_PASSWORD=mieuxpass
       - DB_NAME=mieuxflow_db
       - JWT_SECRET=mieuxflow_super_secret_key_2026
       - JWT_EXPIRATION=24h
