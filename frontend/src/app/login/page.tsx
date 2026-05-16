@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/lib/api";
-import { Loader2, ArrowRight } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -29,118 +29,80 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex font-sans overflow-hidden">
-      {/* Left Side: Animated Brand Area */}
-      <div className="hidden lg:flex lg:w-1/2 relative bg-sidebar flex-col justify-between p-12 overflow-hidden">
-        {/* Subtle animated gradient orbs in background */}
-        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-primary/20 blur-[120px] animate-pulse-slow"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-indigo-500/20 blur-[100px] animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
-        
-        <div className="relative z-10 flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg shadow-primary/30">
-            M
-          </div>
-          <span className="text-white font-bold text-2xl tracking-tight">MieuxFlow</span>
-        </div>
-
-        <div className="relative z-10 max-w-md animate-fade-in-up">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Intelligence driven <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-300">operations</span>.
-          </h1>
-          <p className="text-sidebar-foreground/70 text-lg leading-relaxed">
-            Unify your enterprise workflows, accelerate SLA delivery, and gain deep operational insights in real-time.
-          </p>
-          
-          {/* Mock testimonial / stats card */}
-          <div className="mt-12 glass-panel !bg-white/5 !border-white/10 rounded-2xl p-6 backdrop-blur-md">
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="flex -space-x-3">
-                {[1,2,3].map(i => (
-                  <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-sidebar flex items-center justify-center text-[10px] text-white font-medium">
-                    U{i}
-                  </div>
-                ))}
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center font-sans p-4">
+      <div className="w-full max-w-[400px]">
+        {/* Simple Asana-like Logo */}
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 rounded-full bg-red-400 flex items-center justify-center">
+              <div className="flex gap-0.5">
+                <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
               </div>
-              <div className="text-sm text-sidebar-foreground/80 font-medium">Trusted by leading enterprises</div>
             </div>
+            <span className="font-semibold text-2xl tracking-tight text-foreground">mieuxflow</span>
           </div>
         </div>
 
-        <div className="relative z-10 text-sm text-sidebar-foreground/50">
-          &copy; {new Date().getFullYear()} Mieux Technologies Pvt Ltd. All rights reserved.
-        </div>
-      </div>
-
-      {/* Right Side: Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 relative">
-        {/* Mobile brand header (hidden on large screens) */}
-        <div className="absolute top-8 left-8 lg:hidden flex items-center space-x-3">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-md">
-            M
-          </div>
-          <span className="text-foreground font-bold text-xl tracking-tight">MieuxFlow</span>
-        </div>
-
-        <div className="w-full max-w-md animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-          <div className="mb-10">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-2">Welcome back</h2>
-            <p className="text-muted-foreground">Please enter your details to sign in.</p>
+        <div className="bg-card border border-border rounded-[8px] p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] animate-fade-in-up">
+          <div className="mb-6 text-center">
+            <h2 className="text-[20px] font-medium text-foreground">Log in</h2>
           </div>
 
           {error && (
-            <div className="mb-6 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium animate-fade-in-up">
+            <div className="mb-4 p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium text-center">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2 relative group">
-              <label className="text-sm font-medium text-foreground transition-colors group-focus-within:text-primary">Email address</label>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-1.5">
+              <label className="text-[13px] font-medium text-muted-foreground">Email Address</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-12 bg-secondary/50 border border-border rounded-xl px-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-foreground"
+                className="w-full h-10 bg-card border border-border hover:border-muted-foreground/50 rounded px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-foreground"
                 placeholder="name@company.com"
               />
             </div>
 
-            <div className="space-y-2 relative group">
+            <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-foreground transition-colors group-focus-within:text-primary">Password</label>
-                <a href="#" className="text-sm text-primary hover:underline font-medium transition-colors">Forgot password?</a>
+                <label className="text-[13px] font-medium text-muted-foreground">Password</label>
               </div>
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full h-12 bg-secondary/50 border border-border rounded-xl px-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-foreground"
-                placeholder="••••••••"
+                className="w-full h-10 bg-card border border-border hover:border-muted-foreground/50 rounded px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-foreground"
+                placeholder="Password"
               />
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full h-12 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center group mt-2"
+              className="w-full h-10 bg-primary text-white font-medium text-[15px] rounded hover:bg-primary/90 focus:outline-none disabled:opacity-70 disabled:cursor-not-allowed transition-colors flex items-center justify-center mt-2"
             >
               {isLoading ? (
                 <Loader2 className="animate-spin" size={20} />
               ) : (
-                <>
-                  Sign in <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </>
+                "Log in"
               )}
             </button>
           </form>
           
-          <div className="mt-10 text-center">
-            <p className="text-sm text-muted-foreground">
-              Don't have an account? <a href="#" className="text-primary font-medium hover:underline">Contact administrator</a>
-            </p>
+          <div className="mt-6 text-center">
+            <a href="#" className="text-[13px] text-muted-foreground hover:underline transition-colors">Forgot your password?</a>
           </div>
+        </div>
+        
+        <div className="mt-8 text-center text-[12px] text-muted-foreground">
+          By logging in, you agree to the <a href="#" className="underline">Terms of Service</a> and <a href="#" className="underline">Privacy Policy</a>.
         </div>
       </div>
     </div>

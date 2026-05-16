@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    /* Premium Light Mode Palette */
-    --background: 210 20% 98%; /* Softer, slightly cool background */
-    --foreground: 222.2 47.4% 11.2%;
+    /* Exact Asana-like Theme */
+    --background: 210 20% 98%; /* #f6f8f9 or similar very light gray */
+    --foreground: 220 5% 12%; /* #1e1f21 dark text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%; /* Pure white #ffffff */
+    --card-foreground: 220 5% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 220 5% 12%;
 
-    /* Deep Indigo/Purple Accent (Asana/Linear style) */
-    --primary: 250 85% 60%; 
-    --primary-foreground: 210 40% 98%;
+    /* Soft Purple Accent (from the charts) */
+    --primary: 252 80% 65%; /* approx #8c73ff */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 220 5% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 5% 45%; /* #6d6e70 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 20% 96%;
+    --accent-foreground: 220 5% 12%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 250 85% 60%;
+    --border: 210 15% 90%; /* #e1e3e6 soft gray border */
+    --input: 210 15% 90%;
+    --ring: 252 80% 65%;
 
-    --radius: 0.75rem; /* Softer, rounder corners */
+    --radius: 0.5rem; /* 8px radius like the cards */
     
-    /* Deep Charcoal Sidebar */
-    --sidebar-background: 224 71% 4%; 
-    --sidebar-foreground: 213 31% 91%;
-    --sidebar-active: 210 40% 98%;
-    --sidebar-hover: 216 34% 17%;
+    /* Exact Asana Dark Sidebar */
+    --sidebar-background: 220 5% 12%; /* #1e1f21 */
+    --sidebar-foreground: 210 10% 85%; /* Light gray text */
+    --sidebar-active: 0 0% 100%; /* White text for active */
+    --sidebar-hover: 220 5% 20%; /* Slightly lighter for hover */
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-    --primary: 250 85% 65%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 250 85% 65%;
+    --background: 220 5% 12%;
+    --foreground: 210 20% 98%;
+    --card: 220 5% 15%;
+    --card-foreground: 210 20% 98%;
+    --popover: 220 5% 15%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 252 80% 70%;
+    --primary-foreground: 220 5% 12%;
+    --secondary: 220 5% 20%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 5% 20%;
+    --muted-foreground: 210 10% 65%;
+    --accent: 220 5% 20%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 5% 20%;
+    --input: 220 5% 20%;
+    --ring: 252 80% 70%;
   }
 }
 
@@ -73,49 +73,48 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-feature-settings: "rlig" 1, "calt" 1; /* Better typography */
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer utilities {
+  /* Flat clean cards instead of glass */
   .glass-panel {
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* Very subtle shadow */
   }
   
   .dark .glass-panel {
-    background-color: rgba(15, 23, 42, 0.7);
-    border-color: rgba(255, 255, 255, 0.1);
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
   }
 
+  /* Remove heavy hover lift, just a subtle border change */
   .hover-lift {
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-    cursor: pointer;
+    transition-duration: 200ms;
   }
   
   .hover-lift:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    border-color: hsla(var(--primary), 0.2);
+    border-color: hsla(var(--primary), 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   }
 
   .animate-fade-in-up {
-    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInUp 0.4s ease-out forwards;
   }
   
   .animate-pulse-slow {
-    animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulseSlow 4s ease-in-out infinite;
   }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -128,6 +127,6 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 }
