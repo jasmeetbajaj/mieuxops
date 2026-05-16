@@ -5,6 +5,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { ShieldCheck, Search, Filter, CheckCircle2, XCircle, AlertTriangle, FileSignature } from "lucide-react";
 import { api } from "@/lib/api";
 import { format } from "date-fns";
+import Link from "next/link";
 
 export default function AuditPage() {
   const [audits, setAudits] = useState<any[]>([]);
@@ -44,6 +45,9 @@ export default function AuditPage() {
           <h1 className="text-3xl font-bold tracking-tight">Security & Compliance Audit</h1>
           <p className="text-muted-foreground mt-1">Review deployment checklists and enforce infrastructure security gates.</p>
         </div>
+        <Link href="/dashboard/audit/new" className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium text-sm hover:bg-primary/90 transition-colors">
+          + New Audit Record
+        </Link>
       </div>
 
       <div className="bg-card border rounded-xl shadow-sm overflow-hidden flex flex-col min-h-[500px]">

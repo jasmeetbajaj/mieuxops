@@ -52,6 +52,9 @@ export default function ProjectsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Project Management</h1>
           <p className="text-muted-foreground mt-1">Track active deployments, SLAs, and cross-department workflows.</p>
         </div>
+        <Link href="/dashboard/projects/new" className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium text-sm hover:bg-primary/90 transition-colors">
+          + New Project
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
